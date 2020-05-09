@@ -1,0 +1,14 @@
+name: BetterBackup
+version: ${project.version}
+main: stream.azakt.betterbackup.BetterBackup
+api-version: 1.13
+authors: [Azakt]
+description: A robust backup solution for Paper servers
+website: azakt.stream
+commands:
+  bb:
+    description: Better Backup command.
+    usage: /bb [on/off/reload]
+    permission: betterbackup.use
+    permission-message: You do not have permission to execute this command.
+    default: op
