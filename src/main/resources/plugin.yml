@@ -8,7 +8,7 @@ website: azakt.stream
 commands:
   bb:
     description: Better Backup command.
-    usage: /bb [on/off/reload]
+    usage: BetterBackup - Usage - /bb [on/off/reload/backup]
     permission: betterbackup.use
-    permission-message: You do not have permission to execute this command.
+    permission-message: BetterBackup - You do not have permission to execute this command.
     default: op

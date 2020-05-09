@@ -16,11 +16,38 @@ public class BetterBackupCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if(command.getName().equalsIgnoreCase("bb")) {
-            if (sender instanceof Player && !sender.hasPermission("betterbackup.use")) {
+            if (args.length == 0) {
                 return false;
             }
             else {
-                // Do something backup-y
+                if(args[0].equalsIgnoreCase("on")) {
+                    this.plugin.getConfig().set("enabled", true);
+                    this.plugin.saveConfig();
+                    this.plugin.onReload();
+                    sender.sendMessage("[BB] BetterBackup has been successfully enabled!");
+                    if(sender instanceof Player) { this.plugin.getLogger().info(String.format("[BB] %s has enabled BetterBackup successfully!", sender.getName())); }
+                }
+                else if(args[0].equalsIgnoreCase("off")) {
+                    this.plugin.getConfig().set("enabled", false);
+                    this.plugin.saveConfig();
+                    this.plugin.onReload();
+                    sender.sendMessage("[BB] BetterBackup has been successfully disabled!");
+                    if(sender instanceof Player) { this.plugin.getLogger().info(String.format("[BB] %s has disabled BetterBackup successfully!", sender.getName())); }
+                }
+                else if(args[0].equalsIgnoreCase("reload")) {
+                    this.plugin.onReload();
+                    sender.sendMessage("[BB] BetterBackup has successfully reloaded the config!");
+                    if(sender instanceof Player) { this.plugin.getLogger().info(String.format("[BB] %s has reloaded BetterBackup successfully!", sender.getName())); }
+                }
+                else if(args[0].equalsIgnoreCase("backup")) {
+                    new BetterBackupTask(this.plugin).run();
+                    sender.sendMessage("[BB] BetterBackup has successfully backed up!");
+                    if(sender instanceof Player) { this.plugin.getLogger().info(String.format("[BB] %s has backed up with BetterBackup successfully!", sender.getName())); }
+                }
+                else {
+                    return false;
+                }
+                return true;
             }
         }
         return false;

@@ -1,0 +1,11 @@
+# BetterBackup version 1.15.2-001 by Azakt
+# Config File
+# -------------------------------------------------------------------------------------------------
+# enabled - determines if backing up is enabled.
+# minutes-interval - determines how long the server should go between each backup in minutes.
+#                    1hr: 60; 6hrs: 360; 24hrs: 1440.
+# max-size - determines how large (in GB) the backups folder can grow. If there's no space,
+#            it will overwrite old backups. Set this to 0 for unlimited.
+enabled: false
+minutes-interval: 100
+max-size: 10
